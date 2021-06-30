@@ -16,9 +16,3 @@ derivative = "2.2"
 glsl-layout = "0.4"
 lazy_static = "1.4"
 log = "0.4"
-
-[build-dependencies]
-shellfn = "0.1"
-color-eyre = "0.5"
-log = "0.4"
-simple_logger = "1.11"
