@@ -1,26 +1,65 @@
-use amethyst::{Application, GameData, SimpleState, SimpleTrans, StateData, StateEvent, assets::LoaderBundle, controls::{ArcBallControl, ArcBallControlBundle, HideCursor}, core::{
+use amethyst::{
+    assets::LoaderBundle,
+    controls::{
+        ArcBallControl,
+        ArcBallControlBundle,
+        HideCursor,
+    },
+    core::{
         dispatcher::DispatcherBuilder,
         transform::TransformBundle,
-    }, ecs::{
+    },
+    ecs::{
         Resources,
         World,
-    }, input::{InputBundle, VirtualKeyCode, is_close_requested, is_key_down, is_mouse_button_down}, renderer::{
+    },
+    input::{
+        is_close_requested,
+        is_key_down,
+        is_mouse_button_down,
+        InputBundle,
+        VirtualKeyCode,
+    },
+    renderer::{
         rendy::hal::command::ClearColor,
         types::DefaultBackend,
         RenderDebugLines,
         RenderToWindow,
         RenderingBundle,
-    }, utils::{application_root_dir, auto_fov::{AutoFov, AutoFovSystem}}, window::ScreenDimensions, winit::event::MouseButton};
+    },
+    utils::{
+        application_root_dir,
+        auto_fov::{
+            AutoFov,
+            AutoFovSystem,
+        },
+    },
+    window::ScreenDimensions,
+    winit::event::MouseButton,
+    Application,
+    GameData,
+    SimpleState,
+    SimpleTrans,
+    StateData,
+    StateEvent,
+};
 use amethyst_assets::{
     DefaultLoader,
     Loader,
     ProcessingQueue,
 };
-use amethyst_core::{Transform, math::{
-    Point3,
-    Vector3,
-}};
-use amethyst_rendy::{Camera, RenderShaded3D, SpriteSheet};
+use amethyst_core::{
+    math::{
+        Point3,
+        Vector3,
+    },
+    Transform,
+};
+use amethyst_rendy::{
+    Camera,
+    RenderShaded3D,
+    SpriteSheet,
+};
 use amethyst_voxelmap::{
     storage::{
         VecStorage,
@@ -57,7 +96,6 @@ impl Voxel for ExampleVoxel {
     }
 }
 
-
 struct ExampleState;
 
 impl SimpleState for ExampleState {
@@ -67,16 +105,20 @@ impl SimpleState for ExampleState {
             let loader = data.resources.get::<DefaultLoader>().expect("Get Loader");
             let texture = loader.load("spritesheet.png");
             let sprites = loader.load("spritesheet.ron");
-            let sprite_sheet_store = data.resources.get::<ProcessingQueue<SpriteSheet>>().unwrap();
+            let sprite_sheet_store = data
+                .resources
+                .get::<ProcessingQueue<SpriteSheet>>()
+                .unwrap();
             loader.load_from_data(SpriteSheet { texture, sprites }, (), &sprite_sheet_store)
         };
-        
+
         // Create 8x8x8 voxel map.
         let n = 8;
-        let mut voxel_map: VoxelMap<ExampleVoxel, VecStorage<ExampleVoxel, MortonEncoder>> = VoxelMap::new(
-            VecStorage::from_dimensions(Vector3::repeat(n)),
-            sprite_sheet,
-        );
+        let mut voxel_map: VoxelMap<ExampleVoxel, VecStorage<ExampleVoxel, MortonEncoder>> =
+            VoxelMap::new(
+                VecStorage::from_dimensions(Vector3::repeat(n)),
+                sprite_sheet,
+            );
 
         // Fill in some voxels
         for z in 0..n {
@@ -94,10 +136,7 @@ impl SimpleState for ExampleState {
         }
 
         // Add entity with voxelmap component to world
-        let entity = data.world.push((
-            Transform::default(),
-            voxel_map,
-        ));
+        let entity = data.world.push((Transform::default(), voxel_map));
 
         // Create camera (looks along Z-axis towards origin)
         let (width, height) = {
