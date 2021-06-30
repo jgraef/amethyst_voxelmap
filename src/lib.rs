@@ -2,6 +2,8 @@
 //! a volumetric 3D structure containing cubic voxels. It is analogue to
 //! [`amethyst_tilemap`](https://github.com/amethyst/amethyst/tree/main/amethyst_tiles)
 //! in three dimensions.
+//!
+//! ![Screenshot](/examples/screenshot.png)
 
 #![allow(dead_code)]
 

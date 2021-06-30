@@ -16,3 +16,6 @@ derivative = "2.2"
 glsl-layout = "0.4"
 lazy_static = "1.4"
 log = "0.4"
+
+[dev-dependencies]
+amethyst = { git = "https://github.com/amethyst/amethyst.git", version = "0.16.0" }

@@ -1,0 +1,10 @@
+#![enable(implicit_some)]
+{
+"04c60333-c790-4586-aa76-086b19167a04":
+Grid((
+    texture_width: 128,
+    texture_height: 128,
+    columns: 1,
+    rows: 1,
+))
+}

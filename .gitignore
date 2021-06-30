@@ -1,1 +1,3 @@
 /target
+/examples/assets/*.meta
+/.assets_db
