@@ -1,0 +1,24 @@
+[package]
+name = "amethyst_voxelmap"
+version = "0.1.0"
+edition = "2018"
+authors = ["Janosch Gräf <janosch.graef@gmail.com>"]
+license = "MIT"
+
+[dependencies]
+amethyst_assets = { git = "https://github.com/amethyst/amethyst.git", version = "0.16.0" }
+amethyst_rendy = { git = "https://github.com/amethyst/amethyst.git", version = "0.16.0" }
+amethyst_core = { git = "https://github.com/amethyst/amethyst.git", version = "0.16.0" }
+amethyst_error = { git = "https://github.com/amethyst/amethyst.git", version = "0.16.0" }
+amethyst_tiles = { git = "https://github.com/amethyst/amethyst.git", version = "0.16.0" }
+smallvec = "1.6"
+derivative = "2.2"
+glsl-layout = "0.4"
+lazy_static = "1.4"
+log = "0.4"
+
+[build-dependencies]
+shellfn = "0.1"
+color-eyre = "0.5"
+log = "0.4"
+simple_logger = "1.11"
