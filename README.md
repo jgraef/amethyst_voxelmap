@@ -1,4 +1,4 @@
-[MIT license](https://opensource.org/licenses/MIT)
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 ![Maintenance](https://img.shields.io/badge/maintenance-experimental-blue.svg)
 
 # `amethyst_voxelmap`
